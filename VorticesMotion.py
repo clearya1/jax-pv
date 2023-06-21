@@ -222,12 +222,12 @@ class Vortices:
 
     return _r_squared(self.state, i, j)
 
-  def induced_velocity(self, index: int) -> Array:
+  def induced_velocity(self, indices: Array) -> Array:
     """ Calculates the total induced velocity for a vortex due to all the other vortices """
 
-    return _induced_velocity(self.state, self.gammas, index)
+    return _induced_velocity(self.state, self.gammas, indices)
     
-  def every_induced_velocity(self, indices) -> Array:
+  def every_induced_velocity(self, indices: Array) -> Array:
     """ Returns the induced velocity for every vortex in the system """
     
     return _every_induced_velocity(self.state, self.gammas, indices)

@@ -46,6 +46,33 @@ def relative_distances(state: Array, indices: Array) -> Array:
   rel_x, rel_y = vmapped_f(indices)
   return jnp.sqrt( rel_x**2 + rel_y**2 )
   
+@jit
+def periodic_relative_distances_xy(state: Array, indices: Array, L: float):
+  """ Returns the n(n-1)/2 relative distances in the x and y components in the following order of combinations given by indices: (1,2), (1,3), ..., (1, n), (2, 3), ..., (n-1, n). Distance of second entry relative to the first entry. """
+  
+  n = int(len(state)*0.5)
+  def _f(carry, x):
+    return carry, carry[x[1]] - carry[x[0]]
+    
+  _, rel_x = jax.lax.scan(_f, state[:n], indices)
+  _, rel_y = jax.lax.scan(_f, state[n:], indices)
+      
+  rel_x = jnp.where(rel_x < L*-0.5, rel_x+L, rel_x)     # periodic in x-direction => choose smaller distance as can go either way around the torus.
+  rel_x = jnp.where(rel_x > L*0.5, rel_x-L, rel_x)
+  
+  rel_y = jnp.where(rel_y < L*-0.5, rel_y+L, rel_y)     # periodic in y-direction => choose smaller distance as can go either way around the torus.
+  rel_y = jnp.where(rel_y > L*0.5, rel_y-L, rel_y)
+  
+  return rel_x, rel_y
+  
+@jit
+def periodic_relative_distances(state: Array, indices: Array, L: float):
+  """ Returns the n(n-1)/2 relative distances in the following order of combinations given by indices: (1,2), (1,3), ..., (1, n), (2, 3), ..., (n-1, n). Distance of second entry relative to the first entry. """
+  
+  rel_distances = periodic_relative_distances(state, indices, L)
+  
+  return jnp.sqrt( rel_distances[0]**2 + rel_distances[1]**2 )
+  
 def sigmoid(x: float, delta: float) -> float:
   """ Compute the sigmoid function """
   
