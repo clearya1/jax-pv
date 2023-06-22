@@ -43,7 +43,7 @@ def _induced_velocity(state: Array, gammas: Array, indices: Array, L: float, m=2
     index = x[0]
     k = x[1]
     
-    dx = state[index] - state[n]
+    dx = state[index] - state[k]
     dy = state[index+n] - state[k+n]
     
     # 1 corresponds to summing over the x direction to get the cot
@@ -115,11 +115,10 @@ def _induced_velocity(state: Array, gammas: Array, indices: Array, L: float, m=2
 def _return_H(state: Array, gammas: Array, indices: Array, L: float):
   """ Returns the Hamiltonian of the system """
   
-  carry = utils.periodic_relative_distances_xy(state, indices, L)
+  carry = lf.periodic_relative_distances_xy(state, indices, L)
   
   def _f(carry, x):
-    a, b = jnp.split(carry, 2)
-    H_temp = -1. * gammas[x[0]] * gammas[x[1]] * jnp.log((a**2.+b**2.)**(0.5))
+    H_temp = -1. * gammas[x[0]] * gammas[x[1]] * jnp.log((carry[0]**2.+carry[1]**2.)**(0.5))
     return carry, H_temp
   
   _, H_list = jax.lax.scan(_f, carry, indices)
@@ -133,13 +132,6 @@ def _every_induced_velocity(state: Array, gammas: Array, indices: Array, L: floa
   vmapped_induced_velocity = jax.vmap(_induced_velocity, (None, None, 0, None, None))
   uv_final = vmapped_induced_velocity(state, gammas, indices, L, m)
   return uv_final.T.flatten()
-
-#  def _f(carry, x):
-#    uvs = _induced_velocity(carry, gammas, x, L, m)
-#    return carry, jnp.array(uvs)
-#
-#  _, k = jax.lax.scan(_f, state, indices)    # loops over each vortex and computes its induced velocity
-#  return jnp.transpose(k)                      # need to transpose the np.stacked velocities
 
 @partial(jit, static_argnums=5)
 def _rk2_step(state: Array, gammas: Array, indices: Array, dt: float, L: float, m=2):
