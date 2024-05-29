@@ -4,7 +4,7 @@ Authors: Andrew Cleary, Jacob Page
 
 jax-pv is a fully differentable point vortex solver, for both unbounded and rotating disc-bounded domains, implemented in [JAX](https://github.com/google/jax).
 
-For full details about the possibilities of using jax-pv, read our paper [Exploring the free energy landscape of a rotating superfluid]().
+For full details about the possibilities of using jax-pv, read our paper [Exploring the free energy landscape of a rotating superfluid](https://pubs.aip.org/aip/cha/article/33/10/103123/2916703).
 
 ## Getting Started
 
