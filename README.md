@@ -9,7 +9,7 @@ For full details about the possibilities of using jax-pv, read our paper [Explor
 ## Getting Started
 
 There are currently 3 demo scripts in this repository, each of which outlines how to use jax-pv to answer a different research question:
-- [Search for relative equilibria in an unbounded domain]()
+- [Search for relative equilibria in an unbounded domain](./Demos)
 - [Search for energy-minimising pathways between relative equilibria]()
 - [Search for homoclinic connections between relative equilibira]()
 
@@ -32,3 +32,17 @@ As well as the above demo scripts, jax-pv contains the following:
 ## Citation
 
 If you use jax-pv, please cite:
+@article{10.1063/5.0163803,
+    author = {Cleary, Andrew and Page, Jacob},
+    title = "{Exploring the free-energy landscape of a rotating superfluid}",
+    journal = {Chaos: An Interdisciplinary Journal of Nonlinear Science},
+    volume = {33},
+    number = {10},
+    pages = {103123},
+    year = {2023},
+    month = {10},
+    issn = {1054-1500},
+    doi = {10.1063/5.0163803},
+    url = {https://doi.org/10.1063/5.0163803},
+    eprint = {https://pubs.aip.org/aip/cha/article-pdf/doi/10.1063/5.0163803/18169381/103123\_1\_5.0163803.pdf},
+}
