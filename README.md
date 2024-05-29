@@ -9,9 +9,9 @@ For full details about the possibilities of using jax-pv, read our paper [Explor
 ## Getting Started
 
 There are currently 3 demo scripts in this repository, each of which outlines how to use jax-pv to answer a different research question:
-- [Search for relative equilibria in an unbounded domain](./Demos)
-- [Search for energy-minimising pathways between relative equilibria]()
-- [Search for homoclinic connections between relative equilibira]()
+- [Search for relative equilibria in an unbounded domain](./Demo_REQ.ipynb)
+- [Search for energy-minimising pathways between relative equilibria](Demo_Pathways.ipynb)
+- [Search for homoclinic connections between relative equilibira](./Demo_Connections.ipynb)
 
 ## Organization
 
