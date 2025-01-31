@@ -36,30 +36,21 @@ As well as the above demo scripts, jax-pv contains the following:
 
 If you use jax-pv, please cite:
 
+```
 @article{cleary2023,
     author = {Cleary, Andrew and Page, Jacob}, 
-    
     title = "{Exploring the free-energy landscape of a rotating superfluid}",
-    
     journal = {Chaos: An Interdisciplinary Journal of Nonlinear Science},
-    
     volume = {33},
-    
     number = {10},
-    
     pages = {103123},
-    
     year = {2023},
-    
     month = {10},
-    
     issn = {1054-1500},
-    
     doi = {10.1063/5.0163803},
-    
     url = {https://doi.org/10.1063/5.0163803},
-    
     eprint = {https://pubs.aip.org/aip/cha/article-pdf/doi/10.1063/5.0163803/18169381/103123\_1\_5.0163803.pdf},
 }
+```
 
 Cleary, Andrew & Page, Jacob 2023 Exploring the free-energy landscape of a rotating superfluid. Chaos: An Interdisciplinary Journal of Nonlinear Science 33 (10), 103123
