@@ -4,14 +4,14 @@ Authors: Andrew Cleary, Jacob Page
 
 jax-pv is a fully differentable point vortex solver, for both unbounded and rotating disc-bounded domains, implemented in [JAX](https://github.com/google/jax).
 
-For full details about jax-pv, read our paper [Exploring the free energy landscape of a rotating superfluid](https://pubs.aip.org/aip/cha/article/33/10/103123/2916703/Exploring-the-free-energy-landscape-of-a-rotating).
+For full details about jax-pv, read our paper [Exploring the free energy landscape of a rotating superfluid](https://pubs.aip.org/aip/cha/article/33/10/103123/2916703).
 
 ## Getting Started
 
 There are currently 3 demo scripts in this repository, each of which outlines how to use jax-pv to answer a different research question:
-- [Search for relative equilibria in an unbounded domain]()
-- [Search for energy-minimising pathways between relative equilibria]()
-- [Search for homoclinic connections between relative equilibira]()
+- [Search for relative equilibria in an unbounded domain](./Demo_REQ_Search.ipynb)
+- [Search for energy-minimising pathways between relative equilibria](Demo_DNEB.ipynb)
+- [Search for homoclinic connections between relative equilibira](./Demo_Connections.ipynb)
 
 ## Organization
 
@@ -34,4 +34,34 @@ As well as the above demo scripts, jax-pv contains the following:
 
 ## Citation
 
-If you use jax-pv, please cite: Cleary, Andrew & Page, Jacob 2023 Exploring the free-energy landscape of a rotating superfluid. Chaos: An Interdisciplinary Journal of Nonlinear Science 33 (10), 103123
+If you use jax-pv, please cite:
+
+@article{cleary2023,
+
+    author = {Cleary, Andrew and Page, Jacob}, 
+    
+    title = "{Exploring the free-energy landscape of a rotating superfluid}",
+    
+    journal = {Chaos: An Interdisciplinary Journal of Nonlinear Science},
+    
+    volume = {33},
+    
+    number = {10},
+    
+    pages = {103123},
+    
+    year = {2023},
+    
+    month = {10},
+    
+    issn = {1054-1500},
+    
+    doi = {10.1063/5.0163803},
+    
+    url = {https://doi.org/10.1063/5.0163803},
+    
+    eprint = {https://pubs.aip.org/aip/cha/article-pdf/doi/10.1063/5.0163803/18169381/103123\_1\_5.0163803.pdf},
+    
+}
+
+Cleary, Andrew & Page, Jacob 2023 Exploring the free-energy landscape of a rotating superfluid. Chaos: An Interdisciplinary Journal of Nonlinear Science 33 (10), 103123
