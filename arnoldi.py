@@ -1,4 +1,5 @@
-import numpy as np 
+import logging
+import numpy as np
 import scipy.linalg as la
 from typing import Callable, Tuple, List, Union
 Array = np.ndarray
@@ -86,8 +87,8 @@ def gmres(
     res = abs(p_n1[iter_count]) / la.norm(p_n1)
     iter_count += 1
   
-  print("GMRES residual: ", res, "Iterations: ", iter_count-1)
-  return basis, res, iter_count-1 
+  logging.info(f"GMRES residual: {res} Iterations: {iter_count-1}")
+  return basis, res, iter_count-1
 
 def hookstep(
     basis: krylovBasis, 

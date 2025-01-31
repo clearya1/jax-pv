@@ -6,7 +6,7 @@ from typing import Callable, Tuple, List, Union
 
 Array = Union[np.ndarray, jnp.ndarray]
 
-from jax.config import config
+from jax import config
 config.update("jax_enable_x64", True)
 
 @jit
@@ -94,4 +94,31 @@ def rel_indices(n: int) -> Array:
   """ Returns the n(n-1)/2 combinations: (1,2), (1,3), ..., (1, n), (2, 3), ..., (n-1, n). """
   
   return np.transpose(np.triu_indices(n, 1))
+  
+def _xy_shift(state: Array, xy: Array) -> Array:
+  """ Applies a shift in xy = (x,y) direction """
+  
+  n = int(len(state)/2)
+
+  shift_vector = jnp.zeros_like(state)
+  shift_vector = shift_vector.at[:n].set(xy[0])
+  shift_vector = shift_vector.at[n:].set(xy[1])
+  
+  return state + shift_vector
+  
+@jit
+def centre_on_com_periodic(state: Array, gammas: Array, L) -> Array:
+  """ Centres the vortices on the centre of vorticity of the system """
+  
+  n = int(len(state)/2)
+  
+#  x_com = jnp.dot(state[:n], gammas)
+#  y_com = jnp.dot(state[n:], gammas)
+  x_com = jnp.average(state[:n], weights=jnp.abs(gammas))
+  y_com = jnp.average(state[n:], weights=jnp.abs(gammas))
+  
+  state = state.at[:n].add(-1*x_com + L/2)
+  state = state.at[n:].add(-1*y_com + L/2)
+  
+  return state % L
   

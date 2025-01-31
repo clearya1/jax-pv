@@ -11,7 +11,7 @@ import utils
 
 Array = Union[np.ndarray, jnp.ndarray]
 
-from jax.config import config
+from jax import config
 config.update("jax_enable_x64", True)
 
 def velocities_for_jacobian(params: Array, gammas: Array, indices: Array, polar_vel: float) -> Array:
