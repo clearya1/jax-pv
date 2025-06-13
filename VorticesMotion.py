@@ -9,7 +9,7 @@ import velocity_transforms as vt
 
 Array = Union[np.ndarray, jnp.ndarray]
 
-from jax.config import config
+from jax import config
 config.update("jax_enable_x64", True)
 
 @jit
